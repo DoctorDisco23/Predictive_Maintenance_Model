@@ -48,3 +48,82 @@ graph TD
     F -->|SHAP Values| H[Explainability Engine]
     G --> I[React Dashboard]
     H --> I
+```
+
+## ✨ Key Features
+- **Multimodal Data Fusion**: Seamlessly integrates text-based maintenance logs with numerical sensor data.
+- **Explainable AI (XAI)**: Uses SHAP values to show exactly which sensors (e.g., `GT_Turbine_Temp`) are driving health degradation.
+- **Spatial Context Awareness**: The NLP mapper understands "Port" vs. "Starboard" and maps faults to the correct physical assets.
+- **Domain-Agnostic Design**: Built with modular `configs/` to allow easy pivoting from Naval to Satellite or Industrial applications.
+- **High Accuracy**: Achieved an **R² Score of 0.996** on the validation set, significantly outperforming naive linear heuristics.
+
+## 🛠️ Tech Stack
+- **Core Logic**: Python, Pandas, NumPy
+- **Machine Learning**: Scikit-Learn (Random Forest), SHAP (Explainability)
+- **NLP**: Custom Semantic Enricher, Regex-based Spatial Mapping
+- **Visualization**: React.js, Tailwind CSS (Dashboard)
+- **Tools**: Git, LTSpice (for hardware co-simulation research)
+
+## 🚀 Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/DoctorDisco23/Predictive_Maintenance_Model.git
+   cd Predictive_Maintenance_Model
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Ensure you have the dataset:**
+   Place `navalplantmaintenance.csv` in the root directory.
+
+## 💻 Usage
+
+### 1. Run the Core AI Pipeline
+This will train the model and run a diagnostic on the latest telemetry data.
+```bash
+python naval_brain.py
+```
+
+### 2. Run the Multimodal Integration
+This simulates a technician log and runs it through the full NLP-to-AI pipeline.
+```bash
+python main_pipeline.py
+```
+
+### 3. Run Unit Tests
+Validate the NLP mapper and spatial context logic.
+```bash
+python MultiModalMapper.py
+```
+
+## 📊 Results & Explainability
+
+The model doesn't just give a number; it gives a **diagnostic report**.
+
+**Sample Output:**
+```text
+🚢 NAVAL PROPULSION AI (XAI ENABLED)
+==================================================
+PREDICTED COMPRESSOR HEALTH: 99.96%
+--------------------------------------------------
+🔍 SHAP EXPLAINABILITY (Why did the AI predict this?):
+  • Exh_Press      : +0.02216 impact (⬆️ Stabilizing Health)
+  • T_Exit_Press   : +0.00861 impact (⬆️ Stabilizing Health)
+  • C_Out_Temp     : -0.00370 impact (⬇️ Degrading Health)
+==================================================
+```
+
+## 🛰️ Future Roadmap: Space Tech Pivot
+This architecture is designed to be **domain-agnostic**. The next phase involves:
+1. **Satellite Thermal Subsystems**: Mapping `GT_Turbine_Temp` to `Solar_Array_Temp` and `Compressor_Health` to `Battery_Degradation_Index`.
+2. **LTSpice Co-Simulation**: Integrating hardware-level thermal simulations to validate AI predictions against physical constraints.
+3. **Edge Deployment**: Optimizing the Random Forest model for deployment on edge devices (e.g., Raspberry Pi or Satellite On-Board Computers).
+
+---
+
+**Author**: Shubh Garg  
+**Contact**: [gargshubh2373@gmail.com](mailto:gargshubh2373@gmail.com) | [LinkedIn](https://www.linkedin.com/in/shubh-garg/)
